@@ -11,12 +11,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
       <a href="<?php echo G5_URL; ?>" class="h2"><b><?php echo $config['cf_title']; ?></b><br><?php echo $g5['title'] ?></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">계정정보를 입력해주세요!</p>
 
       <form name="flogin" action="<?php echo $login_action_url; ?>" onsubmit="return flogin_submit(this);" method="post">
         <input type="hidden" name="url" value="<?php echo $login_url; ?>">
         <div class="input-group mb-3">
-          <input type="text" name="mb_id" id="login_id" required autofocus class="form-control required autofocus" placeholder="Account ID">
+          <input type="text" name="mb_id" id="login_id" required autofocus class="form-control required autofocus" placeholder="아이디">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -24,7 +24,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="mb_password" id="login_pw" required class="form-control required" placeholder="Password">
+          <input type="password" name="mb_password" id="login_pw" required class="form-control required" placeholder="비밀번호">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -36,13 +36,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <div class="icheck-primary">
               <input type="checkbox" name="auto_login" id="login_auto_login">
               <label for="login_auto_login">
-                Remember Me
+                로그인 정보 저장하기
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">로그인</button>
           </div>
           <!-- /.col -->
         </div>
@@ -61,10 +61,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
       <!-- /.social-auth-links -->
       */ ?>
       <p class="mb-1">
-        <a href="<?php echo G5_BBS_URL; ?>/password_lost.php">I forgot my password</a>
+        <a href="<?php echo G5_BBS_URL; ?>/password_lost.php">비밀번호 찾기</a>
       </p>
       <p class="mb-0">
-        <a href="<?php echo G5_BBS_URL; ?>/register.php" class="text-center">Register a new membership</a>
+        <a href="<?php echo G5_BBS_URL; ?>/register.php" class="text-center">회원가입</a>
       </p>
     </div>
     <!-- /.card-body -->

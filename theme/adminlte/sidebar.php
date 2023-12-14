@@ -96,7 +96,7 @@ function fsearchbox_submit(f)
           <li class="nav-item">
             <a href="<?php echo G5_ADMIN_URL; ?>" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
-              <p>Configuration</p>
+              <p>관리자 페이지</p>
             </a>
           </li>
           <?php } ?>

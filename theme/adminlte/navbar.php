@@ -8,7 +8,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo G5_URL; ?>" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company" class="nav-link">회사소개</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -16,7 +16,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision" class="nav-link">서비스 이용약관</a>
-      </li>
+      </li> -->
 
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo G5_BBS_URL; ?>/qalist.php" class="nav-link">1:1문의</a>
