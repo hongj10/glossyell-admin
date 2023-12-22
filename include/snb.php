@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #1f72ff;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #445574;">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link" style="background-color: #1f72ff;">
-        <span class="brand-text font-weight-light">ACQUA</span>
+    <a href="/" class="brand-link" style="background-color: #445574;">
+        <span class="brand-text font-weight-light">(주) 글로시엘 어드민</span>
     </a>
 
     <!-- Sidebar -->

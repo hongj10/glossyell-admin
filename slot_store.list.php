@@ -1,10 +1,26 @@
 <?php
-$menu_code = '1030';
+$menu_code = '1051';
 include '_common.php';
+$add_sql = '';
+if ($member['mb_level'] <= 2) {
+    $add_sql .= " AND mb_id = '{$member['mb_id']}' ";
+} elseif ($member['mb_level'] <= 6) {
+    $add_sql .= " AND second_id = '{$member['mb_id']}' ";
+} elseif ($member['mb_level'] <= 8) {
+    $add_sql .= " AND first_id = '{$member['mb_id']}' ";
+}
+if ($keyword != '') {
+    $add_sql .= " AND (
+    mb_id LIKE '%{$keyword}%'
+    OR mb_name LIKE '%{$keyword}%'
+    ) ";
+}
 
 $table_name = "g5_member";
 $sql_common = " FROM {$table_name}";
-$sql_search = " WHERE mb_level <= {$member['mb_level']} ";
+// $sql_search = " WHERE mb_level <= {$member['mb_level']} {$add_sql} ";
+$sql_search = " WHERE mb_level = '8'{$add_sql} ";
+
 if (!$sst) {
     $sst  = "mb_no";
     $sod = "DESC";
@@ -17,7 +33,7 @@ $sql = " SELECT COUNT(1) as cnt {$sql_common} {$sql_search} {$sql_order} ";
 $row = sql_fetch($sql);
 $total_count = $row['cnt'];
 
-$list_page_rows = 10;
+$list_page_rows = 50;
 $total_page  = ceil($total_count / $list_page_rows);  // 전체 페이지 계산
 if ($page < 1) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
 $from_record = ($page - 1) * $list_page_rows; // 시작 열을 구함
@@ -34,13 +50,13 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
         <thead>
         <tr>
             <th>번호</th>
-            <th>권한</th>
+            <!-- <th>권한</th> -->
             <th>업체</th>
-            <th>대리점ID</th>
-            <th>아이디</th>
-            <th>이름</th>
+            <th>영업자</th>
+            <!-- <th>아이디</th> -->
+            <!-- <th>이름</th> -->
             <th>등록일시</th>
-            <th>로그인일시</th>
+            <!-- <th>로그인일시</th> -->
             <?php
             if ($slot_type) {
                 foreach ($slot_type as $s) {
@@ -50,7 +66,8 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
                 }
             }
             ?>
-            <th>상세정보</th>
+            <!-- <th>상세정보</th> -->
+            <th>변경</th>
             <th>삭제</th>
         </tr>
         </thead>
@@ -72,35 +89,57 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
 
             }
         ?>
-        <tr data-seq="<?php echo $row['mb_id']?>" class="user-tr">
+        <tr data-seq="<?php echo $row['mb_id']?>" class="list-tr">
             <td><?php echo $top_number--?>
-                <input type="hidden" name="method" value="updateSlotType" />
+                <input type="hidden" name="method" value="updateData" />
                 <input type="hidden" name="mb_memo" class="mb_memo" value="<?php echo $row['mb_memo']?>" />
             </td>
-            <td><span class="badge <?php echo $label_css?>"><?php echo $label?></span></td>
-            <td><?php echo $row['first_id'] ?: '-'?></td>
-            <td><?php echo $row['second_id'] ?: '-'?></td>
-            <td><?php echo $row['mb_id']?></td>
-            <td><?php echo $row['mb_name']?></td>
+            <!-- <td><span class="badge <?php echo $label_css?>"><?php echo $label?></span></td> -->
+            <td>
+                <?php
+                // if ($row['first_id']) {
+                //     $first = get_member($row['first_id']);
+                //     echo $first['mb_name'].'<br />('.$first['mb_id'].')';
+                // } else {
+                //     echo '-';
+                // }
+                echo $row['mb_id']
+                ?>
+            </td>
+            <td>
+                <?php
+                echo getUsersSelect('first_id', 'form-control select2 inline-select',
+                'width:200px', '2', $row['first_id']);
+                // if ($row['second_id']) {
+                //     $second = get_member($row['second_id']);
+                //     echo $second['mb_name'].'<br />('.$second['mb_id'].')';
+                // } else {
+                //     echo '-';
+                // }
+                ?>
+            </td>
+            <!-- <td><?php echo $row['mb_id']?></td> -->
+            <!-- <td><?php echo $row['mb_name']?></td> -->
             <td><?php echo str_replace(' ', '<br />', $row['mb_datetime'])?></td>
-            <td><?php echo str_replace(' ', '<br />', $row['mb_today_login'])?></td>
+            <!-- <td><?php echo str_replace(' ', '<br />', $row['mb_today_login'])?></td> -->
             <?php
             if ($slot_type) {
                 foreach ($slot_type as $s) {
-                    $user_slot_type = kget('user_slot_type', ['mb_id' => $member['mb_id'], 'slot_type_seq' => $s['seq']]);
+                    $slot = get("SELECT COUNT(1) as cnt FROM k_slot WHERE mb_id = '{$row['mb_id']}' AND slot_type_seq = '{$s['seq']}'");
                     ?>
-                    <td><?php echo $user_slot_type ? $user_slot_type['count'] : '0' ?></td>
+                    <td><?php echo $slot ? $slot['cnt'] : '0' ?></td>
                     <?php
                 }
             }
             ?>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs btn-select-user">정보보기</button>
-            </td>
+            <!-- <td>
+                <button type="button" class="btn btn-primary btn-xs btn-detail">정보보기</button>
+            </td> -->
+            <td><button type="button" class="btn btn-secondary btn-xs btn-modify"><i class="fas fa-exchange-alt"></i> 업체변경</button></td>
             <td>
                 <?php if ($row['mb_level'] < 10) {?>
                 <button type="button" class="btn btn-secondary btn-xs btn-delete"><i
-                            class="far fa-trash-alt"></i>유저삭제
+                            class="far fa-trash-alt"></i>업체삭제
                 </button>
                 <?php }?>
             </td>

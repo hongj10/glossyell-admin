@@ -9,10 +9,14 @@ $rows = kgetAll('slot_type', array(1=>1), "seq asc");
     <tr>
         <th>슬롯ID</th>
         <th>슬롯명</th>
-        <th>타수</th>
-        <th>슬롯 중복체크</th>
-        <th>슬롯 테스트 여부</th>
-        <th>슬롯 테스트 일자</th>
+        <!-- <th>판매가</th> -->
+        <th>하루 리셀가</th>
+        <!-- <th>타수</th> -->
+        <!-- <th>슬롯 중복체크</th> -->
+        <!-- <th>슬롯 테스트 여부</th> -->
+        <!-- <th>슬롯 테스트 일자</th> -->
+        <th>등록시간</th>
+        <th>마지막 수정시간</th>
         <th>변경</th>
         <th>삭제</th>
     </tr>
@@ -27,7 +31,13 @@ $rows = kgetAll('slot_type', array(1=>1), "seq asc");
                 <td>
                     <input type="text" name="name" class="form-control required" placeholder="슬롯명" value="<?php echo $row['name']?>">
                 </td>
+                <!-- <td>
+                    <input type="text" name="hit" class="form-control required" placeholder="판매가" value="<?php echo $row['is_duplicated']?>">
+                </td> -->
                 <td>
+                    <input type="text" name="is_duplicated" class="form-control required" placeholder="하루 리셀가" value="<?php echo $row['is_duplicated']?>">
+                </td>
+                <!-- <td>
                     <input type="text" name="hit" class="form-control required" placeholder="타수" value="<?php echo $row['hit']?>">
                 </td>
                 <td>
@@ -41,8 +51,10 @@ $rows = kgetAll('slot_type', array(1=>1), "seq asc");
                         <option selected="selected" value="1">테스트 슬롯 O</option>
                         <option <?php echo get_selected('0',  $row['is_tested'])?> value="0">테스트 슬롯 X</option>
                     </select>
-                </td>
-                <td><input type="text" name="test_date" class="form-control" placeholder="테스트 일자" value="<?php echo $row['test_date']?>"></td>
+                </td> -->
+                <!-- <td><input type="text" name="test_date" class="form-control" placeholder="테스트 일자" value="<?php echo $row['test_date']?>"></td> -->
+                <td><?php echo $row['created']?></td>
+                <td><?php echo $row['updated']?></td>
                 <td class="text-center"><button type="button" class="btn btn-primary btn-modify">변경</button></td>
                 <td class="text-center"><button type="button" class="btn btn-danger btn-delete">삭제</button></td>
             </tr>

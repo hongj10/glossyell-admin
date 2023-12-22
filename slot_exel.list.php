@@ -47,7 +47,7 @@ $result = sql_query($sql);
             <th>요청일</th>
             <th>빌헹일</th>
             <th>발행 해준 상위 유저</th>
-            <th>발행 총판</th>
+            <th>발행 업체</th>
             <th>발행 대리점</th>
             <th>아이디</th>
             <th>이름</th>
@@ -62,7 +62,7 @@ $result = sql_query($sql);
             <td>2023-02-09 / 23:54:00</td>
             <td>-</td>
             <td>manager2</td>
-            <td>test(테스트총판)</td>
+            <td>test(테스트업체)</td>
             <td>cemter4019(지앤에스)</td>
             <td>glossyelltest</td>
             <td>글로시엘테스트</td>
@@ -75,7 +75,7 @@ $result = sql_query($sql);
             <td>2023-02-09 / 23:54:00</td>
             <td>-</td>
             <td>manager2</td>
-            <td>test(테스트총판)</td>
+            <td>test(테스트업체)</td>
             <td>cemter4019(지앤에스)</td>
             <td>glossyelltest</td>
             <td>글로시엘테스트</td>

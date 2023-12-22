@@ -32,15 +32,15 @@ include './include/snb.php';
                                                        placeholder="비밀번호" required>
                                                 <select class="form-control inline-select" name="mb_level">
                                                     <?php
-                                                    if ($member['mb_level'] > 8) {
-                                                        echo '<option selected="selected" value="8">총판 생성</option>';
-                                                    }
-                                                    if ($member['mb_level'] > 6) {
+                                                    // if ($member['mb_level'] > 8) {
+                                                        echo '<option selected="selected" value="8">업체 생성</option>';
+                                                    // }
+                                                    // if ($member['mb_level'] > 6) {
                                                         echo '<option value="6">대리점 생성</option>';
-                                                    }
-                                                    if ($member['mb_level'] > 2) {
+                                                    // }
+                                                    // if ($member['mb_level'] > 2) {
                                                         echo '<option value="2">사용자 생성</option>';
-                                                    }
+                                                    // }
                                                     ?>
                                                 </select>
                                                 <button type="submit" class="btn btn-dark btn-inlineblock"><i

@@ -3,13 +3,13 @@
 $menu_code = '1050';
 include '_common.php';
 
-if ($member['mb_level'] <= 2) {
+// if ($member['mb_level'] <= 2) {
     $add_sql = " AND mb_id = '{$member['mb_id']}' ";
-} elseif ($member['mb_level'] <= 6) {
-    $add_sql = " AND second_id = '{$member['mb_id']}' ";
-} elseif ($member['mb_level'] <= 8) {
-    $add_sql = " AND mb_level < 6 AND first_id = '{$member['mb_id']}' ";
-}
+// } elseif ($member['mb_level'] <= 6) {
+//     $add_sql = " AND second_id = '{$member['mb_id']}' ";
+// } elseif ($member['mb_level'] <= 8) {
+//     $add_sql = " AND mb_level < 6 AND first_id = '{$member['mb_id']}' ";
+// }
 
 $table_name = "g5_member";
 $sql_common = " FROM {$table_name}";
@@ -80,7 +80,7 @@ $result = sql_query($sql);
             <td><?php echo $row['mb_name']?>(<?php echo $row['mb_id']?>)</td>
             <td><span class="badge <?php echo $label_css?>"><?php echo $label?></span></td>
             <td>
-                <?php
+                <!-- <?php
                 if ($row['mb_level'] == 2) {
                     $add_class = ' first_id';
                 }
@@ -94,7 +94,12 @@ $result = sql_query($sql);
                     echo getUsersSelect('first_id', 'form-control select2 inline-select'.$add_class,
                                         'width:200px', '8', $row['first_id']);
                 }
-                ?>
+                ?> -->
+                <?php
+                $add_class = ' first_id';
+                echo getUsersSelect('first_id', 'form-control select2 inline-select'.$add_class,
+                                        'width:200px', '8', $row['first_id']);
+                                        ?>
             </td>
             <td class="second-td">
                 <?php

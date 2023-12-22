@@ -30,11 +30,11 @@ function getUsersSelect($name, $class, $style, $mb_level, $mb_id = '', $fist_id 
     "
     );
     if ($mb_level == 2) {
-        $label = '사용자 선택';
+        $label = '영업자 선택';
     } elseif ($mb_level == 8) {
-        $label = '총판 선택';
+        $label = '업체 선택';
     } elseif ($mb_level == 6) {
-        $label = '대리점 선택';
+        $label = '관리자 선택';
     } else {
         $label = '선택';
     }
@@ -95,31 +95,27 @@ function addLog($type, $target_id, $data)
 
 $kmenu['10']['1005'] = ['대시보드', '/dashboard.php', 'fa-tachometer-alt'];
 $kmenu['10']['1010'] = ['슬롯타입생성', '/slot_maketype.php', 'fa-external-link-alt'];
-$kmenu['10']['1020'] = ['쇼핑슬롯관리', '/slot_manage.php', 'fa-th'];
-$kmenu['10']['1030'] = ['슬롯단일추가', '/slot_additional.php', 'fa-plus-square'];
-$kmenu['10']['1050'] = ['총판/대리점 변경', '/slot_store_change.php', 'fa-exchange-alt'];
-$kmenu['10']['1051'] = ['사용자 변경', '/slot_user_change.php', 'fa-exchange-alt'];
+$kmenu['10']['1020'] = ['계약관리', '/slot_manage.php', 'fa-th'];
+$kmenu['10']['1030'] = ['계약단일추가', '/slot_additional.php', 'fa-plus-square'];
+$kmenu['10']['1051'] = ['업체 관리', '/slot_store.php', 'fa-shopping-bag'];
 $kmenu['10']['1060'] = ['사용자 관리', '/slot_user.php', 'fa-users'];
-$kmenu['10']['9010'] = ['로그', '/slot_log.php', 'fa-desktop'];
-$kmenu['10']['9020'] = ['슬롯엑셀등록', '/slot_excel.php', 'fa-file-excel'];
+$kmenu['10']['9010'] = ['정산표', '/slot_log.php', 'fa-desktop'];
 
-$kmenu['8']['1020'] = ['쇼핑슬롯관리', '/slot_manage.php', 'fa-th'];
-$kmenu['8']['1030'] = ['슬롯단일추가', '/slot_additional.php', 'fa-plus-square'];
-$kmenu['8']['1050'] = ['대리점 변경', '/slot_store_change.php', 'fa-exchange-alt'];
-$kmenu['8']['1051'] = ['사용자 변경', '/slot_user_change.php', 'fa-exchange-alt'];
-$kmenu['8']['1060'] = ['사용자 관리', '/slot_user.php', 'fa-users'];
-$kmenu['8']['9010'] = ['로그', '/slot_log.php', 'fa-desktop'];
-$kmenu['8']['9020'] = ['슬롯엑셀등록', '/slot_excel.php', 'fa-file-excel'];
-
-$kmenu['6']['1020'] = ['쇼핑슬롯관리', '/slot_manage.php', 'fa-th'];
-$kmenu['6']['1030'] = ['슬롯단일추가', '/slot_additional.php', 'fa-plus-square'];
+$kmenu['6']['1005'] = ['대시보드', '/dashboard.php', 'fa-tachometer-alt'];
+// $kmenu['6']['1010'] = ['슬롯타입생성', '/slot_maketype.php', 'fa-external-link-alt'];
+$kmenu['6']['1020'] = ['계약관리', '/slot_manage.php', 'fa-th'];
+$kmenu['6']['1030'] = ['계약단일추가', '/slot_additional.php', 'fa-plus-square'];
+$kmenu['6']['1051'] = ['업체 관리', '/slot_store.php', 'fa-shopping-bag'];
 $kmenu['6']['1060'] = ['사용자 관리', '/slot_user.php', 'fa-users'];
-$kmenu['6']['9010'] = ['로그', '/slot_log.php', 'fa-desktop'];
+$kmenu['6']['9010'] = ['정산표', '/slot_log.php', 'fa-desktop'];
 
-$kmenu['2']['1020'] = ['쇼핑슬롯관리', '/slot_manage.php', 'fa-th'];
-// $kmenu['2']['9010'] = ['로그', '/slot_log.php', 'fa-desktop'];
-
-
+// $kmenu['2']['1005'] = ['대시보드', '/dashboard.php', 'fa-tachometer-alt'];
+// $kmenu['2']['1010'] = ['슬롯타입생성', '/slot_maketype.php', 'fa-external-link-alt'];
+$kmenu['2']['1020'] = ['계약관리', '/slot_manage.php', 'fa-th'];
+// $kmenu['2']['1030'] = ['계약단일추가', '/slot_additional.php', 'fa-plus-square'];
+$kmenu['2']['1051'] = ['업체 관리', '/slot_store.php', 'fa-shopping-bag'];
+// $kmenu['2']['1060'] = ['사용자 관리', '/slot_user.php', 'fa-users'];
+$kmenu['2']['9010'] = ['정산표', '/slot_log.php', 'fa-desktop'];
 
 if ($menu_code) {
     if (!isset($kmenu[$member['mb_level']][$menu_code])) {

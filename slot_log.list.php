@@ -15,12 +15,15 @@ if ($member['mb_level'] <= 2) {
 } elseif ($member['mb_level'] <= 8) {
     $add_sql = " AND (mb_id = '{$member['mb_id']}' OR target_id = '{$member['mb_id']}') ";
 }
-
+if (isset($search_first_id)) {
 if ($search_first_id != '') {
     $add_sql .= " AND target_first_id = '{$search_first_id}' ";
 }
+}
+if (isset($search_second_id)) {
 if ($search_second_id != '') {
     $add_sql .= " AND target_second_id = '{$search_second_id}' ";
+}
 }
 
 if ($start) {
@@ -83,7 +86,7 @@ $result = sql_query($sql);
             <th>스토어명</th>
             <!-- <th>발급일시</th>
             <th>발급자</th>
-            <th>총판</th>
+            <th>업체</th>
             <th>대리점</th>
             <th>아이디</th>
             <th>이름</th>

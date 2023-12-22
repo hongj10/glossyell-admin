@@ -18,7 +18,7 @@ if ($keyword != '') {
 
 $table_name = "g5_member";
 $sql_common = " FROM {$table_name}";
-$sql_search = " WHERE mb_level <= {$member['mb_level']} {$add_sql} ";
+$sql_search = " WHERE mb_level != 8 {$add_sql} ";
 if (!$sst) {
     $sst  = "mb_no";
     $sod = "DESC";
@@ -49,8 +49,8 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
         <tr>
             <th>번호</th>
             <th>권한</th>
-            <th>총판</th>
-            <th>대리점</th>
+            <!-- <th>업체</th> -->
+            <!-- <th>대리점</th> -->
             <th>아이디</th>
             <th>이름</th>
             <th>등록일시</th>
@@ -75,7 +75,7 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
                 $label = '슈퍼관리자';
                 $label_css = 'bg-black color-palette';
             } elseif ($row['mb_level'] >= 8) {
-                $label = '총판';
+                $label = '업체';
                 $label_css = 'bg-indigo color-palette';
             } elseif ($row['mb_level'] >= 6) {
                 $label = '대리점';
@@ -92,7 +92,7 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
                 <input type="hidden" name="mb_memo" class="mb_memo" value="<?php echo $row['mb_memo']?>" />
             </td>
             <td><span class="badge <?php echo $label_css?>"><?php echo $label?></span></td>
-            <td>
+            <!-- <td>
                 <?php
                 if ($row['first_id']) {
                     $first = get_member($row['first_id']);
@@ -111,7 +111,7 @@ $slot_type = kgetAll('slot_type', array(1=>1), "seq asc");
                     echo '-';
                 }
                 ?>
-            </td>
+            </td> -->
             <td><?php echo $row['mb_id']?></td>
             <td><?php echo $row['mb_name']?></td>
             <td><?php echo str_replace(' ', '<br />', $row['mb_datetime'])?></td>

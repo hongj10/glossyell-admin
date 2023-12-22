@@ -54,7 +54,7 @@ $result = sql_query($sql);
                 </div>
             </th>
             <th>번호</th>
-            <th>총판</th>
+            <th>업체</th>
             <th>대리점</th>
             <th>사용자</th>
             <th>슬롯 타입</th>

@@ -26,10 +26,10 @@ function updateData()
 
     kadd('slot_type', [
        'name' => $name,
-       'hit' => $hit,
+    //    'hit' => $hit,
        'is_duplicated' => $is_duplicated,
-       'is_tested' => $is_tested,
-       'test_date' => $test_date,
+    //    'is_tested' => $is_tested,
+    //    'test_date' => $test_date,
     ], ['seq' => $seq]);
     
     # 동일 타입의 슬롯에 타수 전체 변경

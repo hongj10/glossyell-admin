@@ -20,15 +20,6 @@ include './include/snb.php';
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <select name="search_keyword" class="form-control inline-select">
-                                        <option value="">전체</option>
-                                        <option value="Y">키워드 있는 슬롯</option>
-                                        <option value="N">키워드 없는 슬롯</option>
-                                    </select>
-                                    <select name="search_play" class="form-control inline-select">
-                                        <option value="Y">진행중 슬롯</option>
-                                        <option value="N">만료 슬롯</option>
-                                    </select>
                                     <?php
                                     if ($member['mb_level'] > 8) {
                                         echo getUsersSelect('search_first_id', 'form-control select22 inline-select',
@@ -77,17 +68,6 @@ include './include/snb.php';
                                     <a href="slot_manage.php" class="btn btn-dark btn-inlineblock"><i
                                                 class="fas fa-undo-alt"></i> 전체초기화
                                     </a>
-                                    <?php
-                                    if ($member['mb_level'] > 2) {
-                                    ?>
-                                    <input type="text" class="form-control col-md-2 inline-input" id="day_count"
-                                           placeholder="연장 일수">
-                                    <button type="button" class="btn btn-secondary btn-inlineblock btn-add-all-period"><i
-                                                class="fas fa-copy"></i> 슬롯기간연장
-                                    </button>
-                                    <?php
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -100,11 +80,10 @@ include './include/snb.php';
                     <div class="card" id="content-body">
 
                     </div>
-                    <!-- /.card -->
+
                 </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 </div>
 <form name="form" id="memo-form" action="" method="post">

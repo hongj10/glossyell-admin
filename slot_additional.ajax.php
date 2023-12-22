@@ -16,12 +16,12 @@ function insertData()
     $add_datas = getAddDatas([
                                  'slot_type_seq',
                                  'work_keyword',
+                                 'hit',
                                  'mb_id',
                                  'start',
                                  'end',
-                                 
                              ]);
-    $add_datas['hit'] = 0;
+    // $add_datas['hit'] = 0;
     if ($count) {
         for ($i = 0;$i < $count;$i++) {
             kadd('slot', $add_datas);
